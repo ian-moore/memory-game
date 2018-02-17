@@ -1,0 +1,15 @@
+.App-header {
+    background-color: #4b4f56;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    font-weight: 700;
+    height: 60px;
+    justify-content: center;
+    text-align: center;
+}
+
+.App-container {
+    max-width: 800px;
+}
