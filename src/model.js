@@ -5,6 +5,7 @@ class Card {
         this.name = name;
         this.position = position;
         this.active = true;
+        this.matched = false;
     }
 
     static create(name, position) {
@@ -19,11 +20,19 @@ const data = [
     'Octavian',
     'William',
     'Alexander',
+    'Cyrus',
+    'Barbarossa',
+    'Victoria',
+    'Saladin',
+    'Isabella',
+    'Arpad',
 ];
 
-export function getInitialData() {
+const getInitialData = () => {
     const dataPairs = data.map(x => [ x, x ])
         .reduce((data, x) => data.concat(x), []);
     return shuffle(dataPairs).map(Card.create)
-        .reduce((obj, x) => Object.assign(obj, { [x.position]: x }));
+        .reduce((obj, x) => Object.assign(obj, { [x.position]: x }), {});
 };
+
+export { getInitialData };

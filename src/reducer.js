@@ -6,6 +6,8 @@ const initialState = {
     secondCardId: null,
 };
 
-export function updateApp(state = initialState) {
+const updateApp = (state = initialState, action) => {
     return state;
-}
+};
+
+export { updateApp }

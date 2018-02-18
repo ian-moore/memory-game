@@ -11,5 +11,26 @@
 }
 
 .App-container {
-    max-width: 800px;
+    margin: auto;
+    width: 876px;
+}
+
+
+
+@media (max-width: 900px) {
+    .App-container {
+        width: 604px;
+    }
+}
+
+@media (max-width: 604px) {
+    .App-container {
+        width: 440px;
+    }
+}
+
+@media (max-width: 440px) {
+    .App-container {
+        width: 310px;
+    }
 }

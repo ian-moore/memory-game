@@ -1,0 +1,40 @@
+.Card {
+    border-radius: 4px;
+    height: 180px;
+    margin: 3px;
+    position: relative;
+    width: 140px;
+}
+
+.Card-clickable {
+    cursor: pointer;
+}
+
+.Card-container {
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: all 1s ease-in-out;
+    width: 100%;
+}
+
+.Card-side {
+    backface-visibility: hidden;
+    border-radius: 4px;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+}
+
+.Card-back {
+    background: linear-gradient(to bottom, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(18,33,199,1) 100%);
+}
+
+.Card-face {
+    background: #eaeaed;
+    color: #0087cc;
+    line-height: 150px;
+    text-align: center;
+    transform: rotateY(180deg);
+}
