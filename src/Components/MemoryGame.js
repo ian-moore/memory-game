@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectCard } from '../actions';
 import Card from './Card';
+import { GameState } from '../model';
 import './MemoryGame.css';
 
 class MemoryGame extends Component {
@@ -11,14 +12,16 @@ class MemoryGame extends Component {
         <div className="MemoryGame-cardsGrid">
           {this.props.cardKeys.map(key =>{
             const card = this.props.cards[key];
+            const gameState = this.props.gameState;
             if (card.matched) {
-              return <Card key={key} />;
+              return <div />;
             } else {
               return (
                 <Card 
                   key={key} 
                   cardId={key} 
                   name={card.name}
+                  isClickable={gameState === GameState.CHOOSING_CARD && !card.flipped}
                   flipped={card.flipped} 
                   onClick={this.props.onCardClick} 
                 />
@@ -35,6 +38,7 @@ const mapStateToProps = state => {
   return {
     cards: state.cards,
     cardKeys: Object.keys(state.cards).sort((a, b) => a - b),
+    gameState: state.gameState,
   }
 };
 

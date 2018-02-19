@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 class Card extends Component {
     onClick = () => {
-        if (!this.props.flipped) {
+        if (this.props.isClickable) {
             this.props.onClick(this.props.cardId);
         }
     }
@@ -12,9 +12,8 @@ class Card extends Component {
         return (
             <div 
                 className={classNames(
-                    "Card",
-                    { 
-                        "Card-clickable": !this.props.flipped,
+                    "Card", { 
+                        "Card-clickable": this.props.isClickable,
                         "Card-flipped": this.props.flipped,
                     },
                 )}

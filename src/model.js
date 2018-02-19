@@ -11,6 +11,16 @@ class CardModel {
     static create(name, position) {
         return new CardModel(name, position);
     }
+
+    static isMatch(card1, card2) {
+        return card1.name === card2.name;
+    }
+}
+
+const GameState = {
+    CHOOSING_CARD: 'CHOOSING_CARD',
+    AWAITING_MATCH: 'AWAITING_MATCH',
+    COMPLETE: 'COMPLETE',
 }
 
 const data = [
@@ -35,4 +45,8 @@ const getInitialData = () => {
         .reduce((obj, x) => Object.assign(obj, { [x.position]: x }), {});
 };
 
-export { getInitialData };
+export { 
+    CardModel,
+    getInitialData,
+    GameState
+};
