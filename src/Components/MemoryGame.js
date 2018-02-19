@@ -14,7 +14,7 @@ class MemoryGame extends Component {
             const card = this.props.cards[key];
             const gameState = this.props.gameState;
             if (card.matched) {
-              return <div />;
+              return <div className="MemoryGame-emptyCard" />;
             } else {
               return (
                 <Card 
