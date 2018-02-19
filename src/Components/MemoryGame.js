@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { selectCard } from '../actions';
 import Card from './Card';
 import './MemoryGame.css';
 
@@ -12,10 +13,16 @@ class MemoryGame extends Component {
             const card = this.props.cards[key];
             if (card.matched) {
               return <Card key={key} />;
-            } else if (!card.active) {
-              return <Card key={key} />;
             } else {
-              return <Card key={key} />;
+              return (
+                <Card 
+                  key={key} 
+                  cardId={key} 
+                  name={card.name}
+                  flipped={card.flipped} 
+                  onClick={this.props.onCardClick} 
+                />
+              );
             }
           })}
         </div>
@@ -33,7 +40,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    
+    onCardClick: cardId => {
+      dispatch(selectCard(cardId));
+    }
   }
 };
 

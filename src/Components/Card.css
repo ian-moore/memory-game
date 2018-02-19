@@ -18,6 +18,10 @@
     width: 100%;
 }
 
+.Card-flipped .Card-container {
+    transform: rotateY(-180deg);
+}
+
 .Card-side {
     backface-visibility: hidden;
     border-radius: 4px;

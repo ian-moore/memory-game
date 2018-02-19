@@ -1,15 +1,15 @@
 const shuffle = require('lodash.shuffle');
 
-class Card {
+class CardModel {
     constructor(name, position) {
         this.name = name;
         this.position = position;
-        this.active = true;
+        this.flipped = false;
         this.matched = false;
     }
 
     static create(name, position) {
-        return new Card(name, position);
+        return new CardModel(name, position);
     }
 }
 
@@ -22,7 +22,7 @@ const data = [
     'Alexander',
     'Cyrus',
     'Barbarossa',
-    'Victoria',
+    'Robert',
     'Saladin',
     'Isabella',
     'Arpad',
@@ -31,7 +31,7 @@ const data = [
 const getInitialData = () => {
     const dataPairs = data.map(x => [ x, x ])
         .reduce((data, x) => data.concat(x), []);
-    return shuffle(dataPairs).map(Card.create)
+    return shuffle(dataPairs).map(CardModel.create)
         .reduce((obj, x) => Object.assign(obj, { [x.position]: x }), {});
 };
 

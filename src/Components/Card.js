@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
 import './Card.css';
+import classNames from 'classnames';
 
 class Card extends Component {
+    onClick = () => {
+        if (!this.props.flipped) {
+            this.props.onClick(this.props.cardId);
+        }
+    }
     render() {
         return (
-            <div className="Card">
+            <div 
+                className={classNames(
+                    "Card",
+                    { 
+                        "Card-clickable": !this.props.flipped,
+                        "Card-flipped": this.props.flipped,
+                    },
+                )}
+                onClick={this.onClick}>
                 <div className="Card-container">
                     <div className="Card-side Card-back" />
                     <div className="Card-side Card-face">
-                        {'this.props.card.name'}
+                        {this.props.name}
                     </div>
                 </div>
             </div>
