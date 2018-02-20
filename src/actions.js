@@ -25,7 +25,7 @@ const selectCard = cardId => {
          if (newGameState === GameState.AWAITING_MATCH) {
             setTimeout(() => {
                 dispatch(checkForMatch());
-            }, 1000);
+            }, 1500);
          }
     };
 };
