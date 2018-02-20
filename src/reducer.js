@@ -7,7 +7,16 @@ const initialState = {
     secondCardId: null,
     gameState: GameState.CHOOSING_CARD,
     matches: 0,
+    turns: 0,
 };
+
+const updateGameState = state => {
+    if (state.matches === Object.keys(state.cards).length / 2) {
+        return GameState.COMPLETE;
+    } else {
+        return GameState.CHOOSING_CARD;
+    }
+}
 
 const updateApp = (state = initialState, action) => {
     let newState;
@@ -27,20 +36,23 @@ const updateApp = (state = initialState, action) => {
                 secondCardId: state.firstCardId ? action.cardId : null,
             };
             break;
+
         case ActionTypes.CHECK_MATCH:
             if (!state.firstCardId || !state.secondCardId) {
                 newState = state;
                 break;
             }
+
             const firstCard = state.cards[state.firstCardId];
             const secondCard = state.cards[state.secondCardId];
+
             if (CardModel.isMatch(firstCard, secondCard)) {
                 newState = {
                     ...state,
-                    gameState: GameState.CHOOSING_CARD,
                     firstCardId: null,
                     secondCardId: null,
                     matches: state.matches + 1,
+                    turns: state.matches + 1,
                     cards: {
                         ...state.cards,
                         [state.firstCardId]: {
@@ -53,12 +65,14 @@ const updateApp = (state = initialState, action) => {
                         }
                     }
                 };
+                newState.gameState = updateGameState(newState);
             } else {
                 newState = {
                     ...state,
                     gameState: GameState.CHOOSING_CARD,
                     firstCardId: null,
                     secondCardId: null,
+                    turns: state.matches + 1,
                     cards: {
                         ...state.cards,
                         [state.firstCardId]: {
@@ -73,10 +87,10 @@ const updateApp = (state = initialState, action) => {
                 };
             }
             break;
+
         default:
             newState = state;
     }
-    console.log(newState);
     return newState;
 };
 
