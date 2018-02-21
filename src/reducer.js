@@ -19,7 +19,6 @@ const updateGameState = state => {
 }
 
 const updateApp = (state = initialState, action) => {
-    console.log(state);
     let newState;
     switch (action.type) {
         case ActionTypes.SELECT_CARD:

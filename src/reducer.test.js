@@ -58,6 +58,53 @@ it('updates second selected card to flipped', () => {
     });
 });
 
+describe('reducer handles failed checkForMatch action', () => {
+    const state = {
+        cards: {
+            '0': {
+                name: 'Historical Figure 1',
+                position: 0,
+                flipped: true,
+                matched: false,
+            },
+            '1': {
+                name: 'Historical Figure 2',
+                position: 1,
+                flipped: true,
+                matched: false,
+            },
+        },
+        firstCardId: '1',
+        secondCardId: '0',
+        gameState: GameState.AWAITING_MATCH,
+        matches: 0,
+        turns: 0,
+    };
+
+    const newState = updateApp(state, checkForMatch());
+
+    test('updated first card', () => {
+        expect(newState.cards[state.firstCardId].matched).toBe(false);
+        expect(newState.cards[state.firstCardId].flipped).toBe(false);
+    });
+    test('updated second card', () => {
+        expect(newState.cards[state.secondCardId].matched).toBe(false);
+        expect(newState.cards[state.secondCardId].flipped).toBe(false);
+    });
+    test('reset firstCardId', () => {
+        expect(newState.firstCardId).toBe(null);
+    });
+    test('reset secondCardId', () => {
+        expect(newState.secondCardId).toBe(null);
+    });
+    test('updated the number of turns taken', () => {
+        expect(newState.turns).toBe(1);
+    });
+    test('updated number of matches', () => {
+        expect(newState.matches).toBe(0);
+    });
+});
+
 describe('reducer handles successful checkForMatch action', () => {
     const state = {
         cards: {
