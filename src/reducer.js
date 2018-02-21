@@ -52,7 +52,7 @@ const updateApp = (state = initialState, action) => {
                     firstCardId: null,
                     secondCardId: null,
                     matches: state.matches + 1,
-                    turns: state.matches + 1,
+                    turns: state.turns + 1,
                     cards: {
                         ...state.cards,
                         [state.firstCardId]: {
@@ -72,7 +72,7 @@ const updateApp = (state = initialState, action) => {
                     gameState: GameState.CHOOSING_CARD,
                     firstCardId: null,
                     secondCardId: null,
-                    turns: state.matches + 1,
+                    turns: state.turns + 1,
                     cards: {
                         ...state.cards,
                         [state.firstCardId]: {
