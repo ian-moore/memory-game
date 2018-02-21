@@ -42,7 +42,7 @@ const getInitialData = () => {
     const dataPairs = data.map(x => [ x, x ])
         .reduce((data, x) => data.concat(x), []);
     return shuffle(dataPairs).map(CardModel.create)
-        .reduce((obj, x) => Object.assign(obj, { [x.position]: x }), {});
+        .reduce((obj, x) => Object.assign(obj, { [x.position.toString()]: x }), {});
 };
 
 export { 

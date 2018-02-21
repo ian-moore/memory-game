@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectCard } from '../actions';
+import { selectCardAndCheck } from '../actions';
 import Card from './Card';
 import { GameState } from '../model';
 import './MemoryGame.css';
@@ -62,7 +62,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onCardClick: cardId => {
-            dispatch(selectCard(cardId));
+            dispatch(selectCardAndCheck(cardId));
         }
     }
 };

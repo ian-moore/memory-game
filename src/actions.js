@@ -5,22 +5,26 @@ const ActionTypes = {
     SELECT_CARD: 'SELECT_CARD',
 };
 
+const selectCard = (cardId, newGameState) => {
+    return { 
+        type: ActionTypes.SELECT_CARD, 
+        cardId: cardId,
+        gameState: newGameState,
+    };
+};
+
 const checkForMatch = () => {
     return { type: ActionTypes.CHECK_MATCH };
 };
 
-const selectCard = cardId => {
+const selectCardAndCheck = cardId => {
     return (dispatch, getState) => {
         const state = getState();
         const newGameState = state.firstCardId 
             ? GameState.AWAITING_MATCH 
             : GameState.CHOOSING_CARD;
 
-        dispatch({ 
-            type: ActionTypes.SELECT_CARD, 
-            cardId: cardId,
-            gameState: newGameState,
-         });
+        dispatch(selectCard(cardId, newGameState));
 
          if (newGameState === GameState.AWAITING_MATCH) {
             setTimeout(() => {
@@ -33,4 +37,6 @@ const selectCard = cardId => {
 export {
     ActionTypes,
     selectCard,
+    checkForMatch,
+    selectCardAndCheck,
 }
