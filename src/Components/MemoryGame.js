@@ -5,8 +5,6 @@ import Card from './Card';
 import { GameState } from '../model';
 import './MemoryGame.css';
 
-const portraitPath = require.context('../Images', true);
-
 class MemoryGame extends Component {
     renderCardsGrid = () => {
         return (
@@ -22,7 +20,6 @@ class MemoryGame extends Component {
                                 key={key}
                                 cardId={key}
                                 name={card.name}
-                                image={portraitPath(`./${card.name}.png`)}
                                 isClickable={gameState === GameState.CHOOSING_CARD && !card.flipped}
                                 flipped={card.flipped}
                                 onClick={this.props.onCardClick}

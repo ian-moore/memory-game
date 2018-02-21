@@ -7,8 +7,6 @@ import { updateApp } from './reducer';
 import './index.css';
 import App from './App';
 
-
-
 const store = createStore(updateApp, applyMiddleware(thunk));
 
 render(

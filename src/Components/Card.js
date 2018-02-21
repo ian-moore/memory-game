@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Card.css';
 import classNames from 'classnames';
+import Images from '../images';
 
 class Card extends Component {
     onClick = () => {
@@ -21,7 +22,10 @@ class Card extends Component {
                 <div className="Card-container">
                     <div className="Card-side Card-back" />
                     <div className="Card-side Card-face">
-                        <img src={this.props.image} alt={this.props.name} />
+                        <img
+                            src={Images[this.props.name]}
+                            alt={this.props.name}
+                        />
                         <div className="Card-title">
                             {this.props.name}
                         </div>
